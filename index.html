@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legördülő lista 1</title>
+</head>
+<body>
+
+<!-- -----------------------------LEGÖRDÜLŐ LISTA TILTÁSA ÉS ENGEDÉLYEZÉSE, AZONOSÍTÓJA, ELEMEK SZÁMA---------------------------->
+
+<form id = "myForm">
+    <select id="gyumolcsok">
+        <option >alma</option>
+        <option >körte</option>
+        <option >meggy</option>
+        <option >szőlő</option>
+        <option >szilva</option>
+        <option >barack</option>
+        <option >eper</option>
+        <option >málna</option>
+        <option >dinnye</option>
+    </select>
+    <input type= "button" onclick = "disable()" value = "Lista tiltása">
+    <input type= "button" onclick = "enable()" value = "Lista tiltásának feloldása">
+    <input type = "button" onclick="azonosito()" value = "A lista azonosítója">
+   
+</form>
+
+<p id = "demo1"></p>
+<p id = "demo2"></p>
+
+<script>
+    function disable(){
+        document.getElementById("gyumolcsok").disabled = true;
+    }
+    function enable(){
+        document.getElementById("gyumolcsok").disabled = false;
+    }
+    function azonosito(){
+        document.getElementById("demo1").innerHTML = "Azonosító: " + document.getElementById("gyumolcsok").form.id;
+    }
+    let gy = document.getElementById("gyumolcsok").length;
+    document.getElementById("demo2").innerHTML = "A lista eleminek száma: " + gy;   // Elemek száma
+</script> 
+
+<!-- ------------------LEGÖRDÜLŐ LISTÁBÓL OLDALSÁVOS (TÖBBSOROS) LISTA LESZ ÉS TÖBBSOROSBÓL ÚJRA LEGÖRDÜLŐ-------------------->
+<hr>
+<br>
+   <input type="button" onclick ="oldalsav()" value= "A legördülő lista átalakul">
+   <input type="button" onclick = "oldalsav2()" value = "Legördülő lista visszaállítása">
+
+   <script>
+       function oldalsav(){
+       document.getElementById("gyumolcsok").size = 9;
+    }
+    function oldalsav2(){
+document.getElementById("gyumolcsok").size = false;
+    }
+    </script>
+<br>
+<hr>
+<br>
+
+<!-- ------------------------------ EGY ELEM KIVÁLASZTÁSA ÉS MEGJELENÍTÉSE----------------------------------->
+
+<input type="button" onclick ="egyElem()" value = "Egy kiválasztott elem megjelenítése">
+<p id = "demo3"></p>
+<script>
+    function egyElem(){
+    let gyumolcs= document.getElementById("gyumolcsok");
+    document.getElementById("demo3").innerHTML = gyumolcs.options[gyumolcs.selectedIndex].text;
+    }
+</script>
+</body>
+
+<!-- disable - tiltva
+     size - méret ( jelen esetben a lista nagyságára, méretére gondol)
+     length - a lista eleminek hossza, száma
+     multiple - több elem kiválasztása-->
+
+</html>
